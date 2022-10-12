@@ -5,10 +5,10 @@ const connection = require('../../../src/models/database/connection');
 const modelsProducts = require('../../../src/models/products.model');
 const mockModelsDB = require('./mocks');
 
-describe.only('Teste unitários da camada Models', () => {
+describe('Teste unitários da camada Models', () => {
   describe('Funções do procuts', () => {
     afterEach(sinon.restore);
-    it('Testa se a função findAll retorna todos os produtos', async () => {
+    it('Testa se a função findAll retorna todos os produtos', async function () {
       sinon.stub(connection, "execute").resolves(mockModelsDB.mockAllDB);
 
       const result = await modelsProducts.findAll();
@@ -16,7 +16,7 @@ describe.only('Teste unitários da camada Models', () => {
       expect(result).to.deep.equal(mockModelsDB.mockAllDB);
     })
 
-    it("Testa se a função findById retorna apenas um produto", async () => {
+    it("Testa se a função findById retorna apenas um produto", async function () {
       sinon.stub(connection, "execute").resolves(mockModelsDB.mockByIdDB);
 
       const resultFindByID = await modelsProducts.findById(1);

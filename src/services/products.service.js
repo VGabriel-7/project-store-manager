@@ -10,7 +10,7 @@ const findAll = async () => {
 const findById = async (productId) => {
   const { error } = idSchema.validate(productId);
 
-  if (error) return { type: 'INVALID_VELUE', message: error.message };
+  if (error) return { type: 'INVALID_VALUE', message: error.message };
 
   const product = await productsModel.findById(productId);
   if (product) return { type: null, message: product };
