@@ -18,10 +18,12 @@ const findById = async (idProducts) => {
 };
 
 const insert = async (name) => {
-  const [result] = await connection.execute(
-    'INSERT INTO products(name) VALUES (?)',
+  const [{ insertId }] = await connection.execute(
+    'INSERT INTO products (name) VALUES (?)',
     [name],
   );
+  
+  const result = { id: insertId, name };
 
   return result;
 };

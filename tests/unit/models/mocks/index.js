@@ -17,7 +17,7 @@ const mockByIdDB = {
 
 const mockInsert = {
   id: 3,
-  name: "Chinforímpula",
+  name: { name: 'Chinforímpula' },
 };
 
 module.exports = {

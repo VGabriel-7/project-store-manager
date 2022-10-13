@@ -10,7 +10,7 @@ const findAll = async () => {
 const findById = async (productId) => {
   const { error } = idSchema.validate(productId);
 
-  if (error) return { type: 'INVALID_VALUE', message: error.message };
+  if (error) return { type: 'UNPROCESSABLE_ENTITY', message: error.message };
 
   const product = await productsModel.findById(productId);
   if (product) return { type: null, message: product };
@@ -18,16 +18,22 @@ const findById = async (productId) => {
 };
 
 const insertProduct = async (name) => {
-  const { error } = nameSchema.validade(name);
+  const { error } = nameSchema.validate(name);
 
-  if (error) return { type: 'INVALID_VALUE', message: error.message };
+  if (error && error.message.includes('"value" is')) {
+    return { type: 'BAD_REQUEST', message: '"name" is required' };
+  } if (error && error.message.includes('"value" length must')) {
+    return {
+      type: 'UNPROCESSABLE_ENTITY',
+      message: '"name" length must be at least 5 characters long',
+    };
+  }
 
   const insertedProduct = await productsModel.insert(name);
-  if (insertedProduct) return { type: null, message: insertProduct };
 
-  return { type: 'NOT_INSERTED', message: 'Product not inserted' };
+  return { type: null, message: insertedProduct };
 };
-
+insertProduct('');
 module.exports = {
   findAll,
   findById,

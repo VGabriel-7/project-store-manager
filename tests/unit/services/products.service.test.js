@@ -37,7 +37,16 @@ describe('Teste unitários da camada Service', () => {
     sinon.stub(modelProducts, "findById").resolves(mockService.mockFindByIdNotFound);
 
     const { message } = await serviceProducts.findById(999);
-    
+ 
     expect(message).to.deep.equal(mockService.mockFindByIdNotFound);
+  });
+
+  it('Testa se a função insertProduct insere um produto e retorna o produto com um id', async function () {
+    sinon.stub(connection, "execute").resolves([{ insertId: 4 }]);
+    sinon.stub(modelProducts, "insert").resolves(mockService.mockInsert);
+    
+    const { message } = await serviceProducts.insertProduct('Chimforímpula');
+    
+    expect(message).to.deep.equal(mockService.mockInsert);
   });
 })

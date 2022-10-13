@@ -24,12 +24,12 @@ describe('Teste unitários da camada Models', () => {
     });
   
   it('Testa se a função insert insere um novo produto na tabela products', async function () {
-    sinon.stub(connection, "execute").resolves([mockModelsDB.mockInsert]);
+    sinon.stub(connection, "execute").resolves([{ insertId: 3 }]);
     
     const resultInsert = await modelsProducts.insert({
       name: 'Chinforímpula',
     });
-    
+
     expect(resultInsert).to.deep.equal(mockModelsDB.mockInsert);
     });
 });
