@@ -1,11 +1,16 @@
-const { expect } = require('chai');
+const chai = require('chai');
+const sinonChai = require('sinon-chai');
 const sinon = require('sinon');
 const productsController = require('../../../src/controllers/products.controller');
 const productsService = require('../../../src/services/products.service');
 
+const { expect } = chai;
+
+chai.use(sinonChai);
+
 describe('Teste da camada Controller', () => {
   describe('', () => {
-    it('', async function () {
+    it('Testa a função listProducts', async function () {
       const res = {};
       const req = {};
 
@@ -15,13 +20,13 @@ describe('Teste da camada Controller', () => {
 
       await productsController.listProducts(req, res);
 
-      expect(res.status).to.have.been.caledWith(200);
-      expect(res.json).to.have.been.caledWith([]);
+      expect(res.status).to.have.been.calledWith(200);
+      expect(res.json).to.have.been.calledWith([]);
     });
 
-    it('', async function () {
+    it('Testa a função getProduct', async function () {
       const res = {};
-      const req = { body: { params: { id: 1 } } };
+      const req = { params: { id: 1 } };
 
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns();
@@ -29,8 +34,8 @@ describe('Teste da camada Controller', () => {
 
       await productsController.getProduct(req, res);
 
-      expect(res.status).to.have.been.caledWith(200);
-      expect(res.json).to.have.been.caledWith({ id: 1, name: 'xaolin' });
+      expect(res.status).to.have.been.calledWith(200);
+      expect(res.json).to.have.been.calledWith({ id: 1, name: 'xaolin' });
     });
   });
 })

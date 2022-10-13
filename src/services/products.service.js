@@ -1,9 +1,9 @@
 const productsModel = require('../models/products.model');
-const { idSchema } = require('./validations/schemas');
+const { idSchema, nameSchema } = require('./validations/schemas');
 
 const findAll = async () => {
   const products = await productsModel.findAll();
-
+  
   return { type: null, message: products };
 };
 
@@ -17,7 +17,19 @@ const findById = async (productId) => {
   return { type: 'NOT_FOUND', message: 'Product not found' };
 };
 
+const insertProduct = async (name) => {
+  const { error } = nameSchema.validade(name);
+
+  if (error) return { type: 'INVALID_VALUE', message: error.message };
+
+  const insertedProduct = await productsModel.insert(name);
+  if (insertedProduct) return { type: null, message: insertProduct };
+
+  return { type: 'NOT_INSERTED', message: 'Product not inserted' };
+};
+
 module.exports = {
   findAll,
   findById,
+  insertProduct,
 };
