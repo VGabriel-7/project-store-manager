@@ -20,7 +20,7 @@ const findById = async (productId) => {
 // const insertProduct = async (name) => {
 //   const { error } = nameSchema.validate(name);
 
-//   if (error && error.message.includes('"value" is')) {
+//  if (error && error.message.includes('"value" is')) {
 //     return { type: 'BAD_REQUEST', message: '"name" is required' };
 //   } if (error && error.message.includes('"value" length must')) {
 //     return {
