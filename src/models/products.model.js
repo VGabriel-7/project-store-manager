@@ -28,8 +28,17 @@ const insert = async (name) => {
   return result;
 };
 
+const listSales = async () => {
+  const [sales] = await connection.execute(
+    'SELECT * FROM sales_products',
+  );
+
+  return sales;
+};
+
 module.exports = {
   findAll,
   findById,
   insert,
+  listSales,
 };
