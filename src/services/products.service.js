@@ -1,5 +1,5 @@
 const productsModel = require('../models/products.model');
-const { idSchema, nameSchema } = require('./validations/schemas');
+const { idSchema } = require('./validations/schemas');
 
 const findAll = async () => {
   const products = await productsModel.findAll();
@@ -17,25 +17,25 @@ const findById = async (productId) => {
   return { type: 'NOT_FOUND', message: 'Product not found' };
 };
 
-const insertProduct = async (name) => {
-  const { error } = nameSchema.validate(name);
+// const insertProduct = async (name) => {
+//   const { error } = nameSchema.validate(name);
 
-  if (error && error.message.includes('"value" is')) {
-    return { type: 'BAD_REQUEST', message: '"name" is required' };
-  } if (error && error.message.includes('"value" length must')) {
-    return {
-      type: 'UNPROCESSABLE_ENTITY',
-      message: '"name" length must be at least 5 characters long',
-    };
-  }
+//   if (error && error.message.includes('"value" is')) {
+//     return { type: 'BAD_REQUEST', message: '"name" is required' };
+//   } if (error && error.message.includes('"value" length must')) {
+//     return {
+//       type: 'UNPROCESSABLE_ENTITY',
+//       message: '"name" length must be at least 5 characters long',
+//     };
+//   }
 
-  const insertedProduct = await productsModel.insert(name);
+//   const insertedProduct = await productsModel.insert(name);
 
-  return { type: null, message: insertedProduct };
-};
-insertProduct('');
+//   return { type: null, message: insertedProduct };
+// };
+
 module.exports = {
   findAll,
   findById,
-  insertProduct,
+  // insertProduct,
 };

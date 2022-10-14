@@ -17,32 +17,32 @@ const findById = async (idProducts) => {
   return result;
 };
 
-const insert = async (name) => {
-  const [{ insertId }] = await connection.execute(
-    'INSERT INTO products (name) VALUES (?)',
-    [name],
-  );
+// const insert = async (name) => {
+//   const [{ insertId }] = await connection.execute(
+//     'INSERT INTO products (name) VALUES (?)',
+//     [name],
+//   );
   
-  const result = { id: insertId, name };
+//   const result = { id: insertId, name };
 
-  return result;
-};
+//   return result;
+// };
 
-const listSales = async () => {
-  const [sales] = await connection.execute(
-    `SELECT SP.sale_id, S.date, SP.product_id, SP.quantity FROM
-      sales_products AS SP
-      INNER JOIN sales AS S
-      ON SP.sale_id = S.id
-      ORDER BY sale_id, product_id`,
-  );
+// const listSales = async () => {
+//   const [sales] = await connection.execute(
+//     `SELECT SP.sale_id, S.date, SP.product_id, SP.quantity FROM
+//       sales_products AS SP
+//       INNER JOIN sales AS S
+//       ON SP.sale_id = S.id
+//       ORDER BY sale_id, product_id`,
+//   );
 
-  return sales;
-};
+//   return sales;
+// };
 
 module.exports = {
   findAll,
   findById,
-  insert,
-  listSales,
+  // insert,
+  // listSales,
 };
