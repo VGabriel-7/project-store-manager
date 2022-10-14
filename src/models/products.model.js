@@ -30,7 +30,11 @@ const insert = async (name) => {
 
 const listSales = async () => {
   const [sales] = await connection.execute(
-    'SELECT * FROM sales_products',
+    `SELECT SP.sale_id, S.date, SP.product_id, SP.quantity FROM
+      sales_products AS SP
+      INNER JOIN sales AS S
+      ON SP.sale_id = S.id
+      ORDER BY sale_id, product_id`,
   );
 
   return sales;
