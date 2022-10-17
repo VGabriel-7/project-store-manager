@@ -8,7 +8,7 @@ const { expect } = chai;
 
 chai.use(sinonChai);
 
-describe('Teste da camada Controller', () => {
+describe('Teste da camada productsController', () => {
   it('Testa a função listProducts', async function () {
     const res = {};
     const req = {};

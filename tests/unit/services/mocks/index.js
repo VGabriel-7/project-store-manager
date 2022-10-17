@@ -23,6 +23,43 @@ const mockInsert = {
   name: "Chimforímpula",
 };
 
+const mockListSales = [
+  {
+    sale_id: 1,
+    date: '2022-10-17T16:32:47.000Z',
+    product_id: 1,
+  quantity: 5 
+  },
+  {
+    sale_id: 1,
+    date: '2022-10-17T16:32:47.000Z',
+    product_id: 2,
+    quantity: 10 },
+  {
+    sale_id: 2,
+    date: '2022-10-17T16:32:47.000Z',
+    product_id: 3,
+    quantity: 15
+  }]
+
+const mockSalesById = [
+  {
+    date: "2022-10-17T16:32:47.000Z",
+    product_id: 1,
+    quantity: 5,
+  },
+  {
+    date: "2022-10-17T16:32:47.000Z",
+    product_id: 2,
+    quantity: 10,
+  },
+  {
+    date: "2022-10-17T16:32:47.000Z",
+    product_id: 3,
+    quantity: 15,
+  },
+];
+
 const mockDeleteProduct = {
   type: null,
   message: {
@@ -41,5 +78,7 @@ module.exports = {
   mockFindByIdError,
   mockFindByIdNotFound,
   mockInsert,
+  mockListSales,
+  mockSalesById,
   mockDeleteProduct,
 };

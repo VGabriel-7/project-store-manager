@@ -9,7 +9,7 @@ const mockService = require('./mocks');
 
 describe('Teste unitários da camada Service', () => {
   afterEach(sinon.restore);
-  it('Testa se a função findAll da camada service retorna todos os produtos', async () => {
+  it('Testa se a função findAll retorna todos os produtos', async () => {
     sinon.stub(modelProducts, "findAll").resolves(mockService.mockFindAll);
 
     const { message } = await serviceProducts.findAll();

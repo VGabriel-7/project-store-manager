@@ -5,7 +5,7 @@ const connection = require('../../../src/models/database/connection');
 const modelsProducts = require('../../../src/models/products.model');
 const mockModelsDB = require('./mocks');
 
-describe('Teste unitários da camada Models', () => {
+describe('Teste unitários da camada productsModels', () => {
     afterEach(sinon.restore);
     it('Testa se a função findAll retorna todos os produtos', async function () {
       sinon.stub(connection, "execute").resolves([mockModelsDB.mockAllDB]);
@@ -32,14 +32,6 @@ describe('Teste unitários da camada Models', () => {
 
     expect(resultInsert).to.deep.equal(mockModelsDB.mockInsert);
   });
-  
-  // it("Testa se a função listSales retorna todos os produtos", async function () {
-  //   sinon.stub(connection, "execute").resolves([mockModelsDB.mockListSales]);
-
-  //   const result = await modelsProducts.listSales();
-
-  //   expect(result).to.deep.equal(mockModelsDB.mockListSales);
-  // });
 
   it('Testa se a função deleteProduct deleta um produto', async () => {
     sinon.stub(connection, "execute").resolves([mockModelsDB.mockDelete]);
