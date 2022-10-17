@@ -36,9 +36,19 @@ const mockListSales = [ {
     product_id: 3,
     quantity: 15 } ]
 
+const mockDelete = {
+  fieldCount: 0,
+  affectedRows: 0,
+  insertId: 0,
+  info: "",
+  serverStatus: 2,
+  warningStatus: 0,
+};
+
 module.exports = {
   mockAllDB,
   mockByIdDB,
   mockInsert,
   mockListSales,
+  mockDelete,
 };

@@ -23,10 +23,23 @@ const mockInsert = {
   name: "Chimforímpula",
 };
 
+const mockDeleteProduct = {
+  type: null,
+  message: {
+    fieldCount: 0,
+    affectedRows: 0,
+    insertId: 0,
+    info: "",
+    serverStatus: 2,
+    warningStatus: 0,
+  },
+}
+
 module.exports = {
   mockFindAll,
   mockFindById,
   mockFindByIdError,
   mockFindByIdNotFound,
   mockInsert,
+  mockDeleteProduct,
 };

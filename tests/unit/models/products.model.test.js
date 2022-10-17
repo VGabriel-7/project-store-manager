@@ -33,11 +33,19 @@ describe('Teste unitários da camada Models', () => {
     expect(resultInsert).to.deep.equal(mockModelsDB.mockInsert);
   });
   
-  it("Testa se a função listSales retorna todos os produtos", async function () {
-    sinon.stub(connection, "execute").resolves([mockModelsDB.mockListSales]);
+  // it("Testa se a função listSales retorna todos os produtos", async function () {
+  //   sinon.stub(connection, "execute").resolves([mockModelsDB.mockListSales]);
 
-    const result = await modelsProducts.listSales();
+  //   const result = await modelsProducts.listSales();
 
-    expect(result).to.deep.equal(mockModelsDB.mockListSales);
+  //   expect(result).to.deep.equal(mockModelsDB.mockListSales);
+  // });
+
+  it('Testa se a função deleteProduct deleta um produto', async () => {
+    sinon.stub(connection, "execute").resolves([mockModelsDB.mockDelete]);
+
+    const result = await modelsProducts.deleteProduct(200);
+
+    expect(result).to.deep.equal(mockModelsDB.mockDelete);
   });
 });

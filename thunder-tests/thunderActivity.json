@@ -41,9 +41,14 @@
     "method": "GET",
     "sortNum": 0,
     "created": "2022-10-11T21:55:30.614Z",
-    "modified": "2022-10-14T19:25:00.145Z",
+    "modified": "2022-10-17T13:31:05.028Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Chimforímpula\"\n}",
+      "form": []
+    },
     "tests": []
   },
   {

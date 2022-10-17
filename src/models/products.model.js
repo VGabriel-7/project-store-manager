@@ -4,7 +4,7 @@ const findAll = async () => {
   const [result] = await connection.execute(
     'SELECT * FROM products',
   );
-  
+
   return result;
 };
 
@@ -17,16 +17,16 @@ const findById = async (idProducts) => {
   return result;
 };
 
-// const insert = async (name) => {
-//   const [{ insertId }] = await connection.execute(
-//     'INSERT INTO products (name) VALUES (?)',
-//     [name],
-//   );
+const insert = async (name) => {
+  const [{ insertId }] = await connection.execute(
+    'INSERT INTO products (name) VALUES (?)',
+    [name],
+  );
   
-//   const result = { id: insertId, name };
+  const result = { id: insertId, name };
 
-//   return result;
-// };
+  return result;
+};
 
 // const listSales = async () => {
 //   const [sales] = await connection.execute(
@@ -40,9 +40,19 @@ const findById = async (idProducts) => {
 //   return sales;
 // };
 
+const deleteProduct = async (productId) => {
+  const [result] = await connection.execute(
+    'DELETE FROM products WHERE id = ?',
+    [productId],
+  );
+
+  return result;
+};
+
 module.exports = {
   findAll,
   findById,
-  // insert,
+  insert,
   // listSales,
+  deleteProduct,
 };
