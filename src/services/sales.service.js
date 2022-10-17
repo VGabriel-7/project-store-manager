@@ -1,6 +1,5 @@
 const salesModel = require('../models/sales.model');
 const productService = require('./products.service');
-const { idSchema } = require('./validations/schemas');
 
 const listSales = async () => {
   const sales = await salesModel.listSales();
