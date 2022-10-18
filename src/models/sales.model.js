@@ -13,6 +13,23 @@ const listSales = async () => {
   return camelize(sales);
 };
 
+const registerSales = async (body) => {
+  const [{ insertId }] = await connection.execute(
+    'INSERT INTO sales () VALUES ()',
+  );
+
+  await body.forEach(({ productId, quantity }) =>
+    connection.execute(
+      'INSERT INTO sales_products (sale_id, product_id, quantity) VALUES (?, ?, ?)',
+      [insertId, productId, quantity],
+    ));
+
+  return {
+    id: insertId,
+    itemsSold: body,
+  };
+};
+
 const findSalesById = async (salesId) => {
   const [sales] = await connection.execute(
     `SELECT S.date, SP.product_id, SP.quantity FROM
@@ -30,4 +47,5 @@ const findSalesById = async (salesId) => {
 module.exports = {
   listSales,
   findSalesById,
+  registerSales,
 };

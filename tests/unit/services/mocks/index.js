@@ -72,6 +72,20 @@ const mockDeleteProduct = {
   },
 }
 
+const returnRegister = {
+  id: 3,
+  itemsSold: [
+    {
+      productId: 1,
+      quantity: 1,
+    },
+    {
+      productId: 2,
+      quantity: 5,
+    },
+  ],
+};
+
 module.exports = {
   mockFindAll,
   mockFindById,
@@ -81,4 +95,5 @@ module.exports = {
   mockListSales,
   mockSalesById,
   mockDeleteProduct,
+  returnRegister,
 };

@@ -17,7 +17,13 @@ const findSalesById = async (salesId) => {
   return { type: 'NOT_FOUND', message: 'Product not found' };
 };
 
+const registerSales = async (body) => {
+  const restul = await salesModel.registerSales(body);
+  return { type: null, message: restul };
+};
+
 module.exports = {
   listSales,
   findSalesById,
+  registerSales,
 };

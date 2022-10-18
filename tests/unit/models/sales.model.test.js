@@ -22,4 +22,30 @@ describe("Testa a camada salesModel", () => {
 
     expect(result).to.deep.equal(mockModelsDB.mockSalesById);
   });
+
+    it(`Testa se a função registerSales da camada model registra vendas e retorna
+      um objeto contendo o id da venda e todos as vendas`, async function () {
+      const returnRegister = {
+        id: 3,
+        itemsSold: [
+          {
+            productId: 1,
+            quantity: 1,
+          },
+          {
+            productId: 2,
+            quantity: 5,
+          },
+        ],
+      };
+      sinon
+        .stub(connection, "execute")
+        .onFirstCall()
+        .resolves([{ insertId: 3 }])
+        .onSecondCall().resolves();
+
+      const result = await salesModels.registerSales(returnRegister.itemsSold);
+
+      expect(result).to.deep.equal(returnRegister);
+    });
 });

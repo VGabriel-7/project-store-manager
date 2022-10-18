@@ -40,4 +40,31 @@ describe("Testa a camada salesController", () => {
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith([]);
   });
+
+  it("Testa a função registerSales", async function () {
+    const res = {};
+    const req = {
+      body: [
+        {
+          productId: 1,
+          quantity: 1,
+        },
+        {
+          productId: 2,
+          quantity: 5,
+        },
+      ],
+    };
+
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+    sinon
+      .stub(salesServices, "registerSales")
+      .resolves({ type: null, message: {} });
+
+    await salesController.registerSales(req, res);
+
+    expect(res.status).to.have.been.calledWith(201);
+    expect(res.json).to.have.been.calledWith({});
+  });
 });

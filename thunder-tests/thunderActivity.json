@@ -37,16 +37,16 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3000/products/999",
-    "url": "http://localhost:3000/sales/1",
-    "method": "GET",
+    "url": "http://localhost:3000/sales",
+    "method": "POST",
     "sortNum": 0,
     "created": "2022-10-11T21:55:30.614Z",
-    "modified": "2022-10-17T19:25:25.687Z",
+    "modified": "2022-10-18T22:35:58.035Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"Chimforímpula\"\n}",
+      "raw": "[\n  {\n    \"productId\": 1,\n    \"quantity\": 1\n  },\n  {\n    \"productId\": 2,\n    \"quantity\": 5\n  }\n]",
       "form": []
     },
     "tests": []

@@ -24,4 +24,16 @@ describe("Testa a camada salesServices", function () {
 
     expect(message).to.deep.equal(mockService.mockSalesById);
   });
+
+  it("Testa se a função registerSales da camada service registra um produto e retorna um objeto com as infos", async function () {
+    sinon
+      .stub(salesModels, "registerSales")
+      .resolves(mockService.returnRegister);
+
+    const { message } = await salesServices.registerSales(
+      mockService.returnRegister.itemsSold
+    );
+
+    expect(message).to.deep.equal(mockService.returnRegister);
+  });
 });
