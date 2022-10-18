@@ -33,6 +33,14 @@ describe('Teste unitários da camada productsModels', () => {
     expect(resultInsert).to.deep.equal(mockModelsDB.mockInsert);
   });
 
+  it('Testa se a função updateProduct edita um produto e retorna um objeto contendo o nome e o id', async function () {
+    sinon.stub(connection, "execute").resolves([{ id: 1, name: 'Chimforímpula' }]);
+
+    const result = await modelsProducts.updateProduct('Chimforímpula', 1);
+
+    expect(result).to.deep.equal({ id: 1, name: "Chimforímpula" });
+  });
+
   it('Testa se a função deleteProduct deleta um produto', async () => {
     sinon.stub(connection, "execute").resolves([mockModelsDB.mockDelete]);
 

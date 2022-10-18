@@ -53,6 +53,22 @@ describe('Teste da camada productsController', () => {
     expect(res.json).to.have.been.calledWith({ id: 4, name: "Chimforímpula" });
   });
 
+  it("Testa a função updateProduct", async function () {
+    const res = {};
+    const req = { params: { id: 3 }, body: { name: 'Xaolin' } };
+
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+    sinon
+      .stub(productsService, "updateProduct")
+      .resolves({ type: null, message: {} });
+
+    await productsController.updateProduct(req, res);
+
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith({});
+  });
+
   it("Testa a função deleteProduct", async function () {
     const res = {};
     const req = { params: { id: 3 } };

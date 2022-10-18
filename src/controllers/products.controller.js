@@ -30,6 +30,16 @@ const insertProduct = async (req, res) => {
   res.status(HTTP_CREATED).json(message);
 };
 
+const updateProduct = async (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+  const { type, message } = await productServices.updateProduct(name, Number(id));
+
+  if (type) return res.status(mapError(type)).json({ message });
+
+  res.status(HTTP_STATUS_OK).json(message);
+};
+
 const deleteProduct = async (req, res) => {
   const { id } = req.params;
   const { type, message } = await productServices.deleteProduct(Number(id));
@@ -44,4 +54,5 @@ module.exports = {
   getProduct,
   insertProduct,
   deleteProduct,
+  updateProduct,
 };

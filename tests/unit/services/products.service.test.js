@@ -50,6 +50,15 @@ describe('Teste unitários da camada Service', () => {
     expect(message).to.deep.equal(mockService.mockInsert);
   });
 
+  it('Testa se a função updateProduct atualiza um produto e retorna um objeto', async () => {
+    sinon
+      .stub(modelProducts, "updateProduct")
+      .resolves({ name: 'Product', id: 2 });
+
+    const { message } = await serviceProducts.updateProduct('Product', 2);
+    expect(message).to.deep.equal({ name: "Product", id: 2 });
+  });
+
   it('Testa se a função deleteProduct deleta um produto', async () => {
     sinon
       .stub(modelProducts, "deleteProduct")
@@ -59,7 +68,8 @@ describe('Teste unitários da camada Service', () => {
     expect(result).to.deep.equal(mockService.mockDeleteProduct);
   });
 
-  it('Testa se ao passar um id que não existe é retornado uma messagem de product not found', async () => {
+  it(`Testa se ao passar um id que não existe para a função
+      deleteProduct é retornado uma messagem de product not found`, async () => {
     sinon
       .stub(modelProducts, "deleteProduct")
       .resolves(mockService.mockFindByIdNotFound);

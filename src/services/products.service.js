@@ -1,5 +1,5 @@
 const productsModel = require('../models/products.model');
-const { idSchema, nameSchema } = require('./validations/schemas');
+const { idSchema, nameSchema, nameAndIdShema } = require('./validations/schemas');
 
 const findAll = async () => {
   const products = await productsModel.findAll();
@@ -34,6 +34,19 @@ const insertProduct = async (name) => {
   return { type: null, message: insertedProduct };
 };
 
+const updateProduct = async (name, id) => {
+  const { error } = nameAndIdShema.validate({ name, id });
+  
+  if (error) return { type: 'UNPROCESSABLE_ENTITY', message: error.message };
+  
+  const result = await productsModel.findById(Number(id));
+
+  if (!result) return { type: 'NOT_FOUND', message: 'Product not found' };
+
+  const product = await productsModel.updateProduct(name, id);
+  return { type: null, message: product };
+};
+
 const deleteProduct = async (productId) => {
   const { error } = idSchema.validate(productId);
   
@@ -51,4 +64,5 @@ module.exports = {
   findById,
   insertProduct,
   deleteProduct,
+  updateProduct,
 };

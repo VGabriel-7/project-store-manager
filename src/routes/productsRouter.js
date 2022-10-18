@@ -4,13 +4,17 @@ const {
   getProduct,
   insertProduct,
   deleteProduct,
+  updateProduct,
 } = require('../controllers/products.controller');
+const { validateNameAndId } = require('../middlewares/updateProductMiddleware');
 
 router.get('/', listProducts);
 
+router.post('/', insertProduct);
+
 router.get('/:id', getProduct);
 
-router.post('/', insertProduct);
+router.put('/:id', validateNameAndId, updateProduct);
 
 router.delete('/:id', deleteProduct);
 
