@@ -21,6 +21,19 @@ const findSalesById = async (req, res) => {
   res.status(HTTP_STATUS_OK).json(message);
 };
 
+const deleteSalesById = async (req, res) => {
+  const { id } = req.params;
+  const { type, message } = await salesServices.findSalesProductsById(Number(id));
+
+  console.log('entrei deletedSales');
+
+  if (type) return res.status(mapError(type)).json({ message });
+
+  await salesServices.deleteSalesById(Number(id));
+
+  res.status(204).end();
+};
+
 const registerSales = async (req, res) => {
   const { message } = await salesServices.registerSales(req.body);
 
@@ -31,4 +44,5 @@ module.exports = {
   listSales,
   findSalesById,
   registerSales,
+  deleteSalesById,
 };

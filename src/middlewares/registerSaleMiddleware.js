@@ -29,7 +29,9 @@ const validNotFound = async (req, res, next) => {
     }
     return false;
   });
+
   const validProductId = await Promise.all(promise);
+  
   if (validProductId.some((a) => a)) return res.status(404).json({ message: 'Product not found' });
 
   return next();

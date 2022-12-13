@@ -18,11 +18,11 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3000/products",
-    "url": "http://localhost:3000/products",
-    "method": "POST",
+    "url": "http://localhost:3000/sales/1",
+    "method": "GET",
     "sortNum": 0,
     "created": "2022-10-11T21:50:15.549Z",
-    "modified": "2022-10-13T23:36:15.183Z",
+    "modified": "2022-12-13T13:17:35.227Z",
     "headers": [],
     "params": [],
     "body": {
@@ -41,7 +41,7 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2022-10-11T21:55:30.614Z",
-    "modified": "2022-10-18T22:35:58.035Z",
+    "modified": "2022-10-18T22:39:02.256Z",
     "headers": [],
     "params": [],
     "body": {

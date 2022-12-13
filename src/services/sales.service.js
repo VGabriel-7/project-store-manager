@@ -13,6 +13,20 @@ const findSalesById = async (salesId) => {
   if (type === 'NOT_FOUND') return { type: 'NOT_FOUND', message: 'Sale not found' };
 
   const product = await salesModel.findSalesById(salesId);
+  if (product.length === 0) return { type: 'NOT_FOUND', message: 'Sale not found' };
+  if (product) return { type: null, message: product };
+  return { type: 'NOT_FOUND', message: 'Product not found' };
+};
+
+const findSalesProductsById = async (salesId) => {
+  const product = await salesModel.findSalesProductsById(salesId);
+  if (product.length === 0) return { type: 'NOT_FOUND', message: 'Sale not found' };
+
+  return { type: null, message: product };
+};
+
+const deleteSalesById = async (salesId) => {
+  const product = await salesModel.deleteSalesById(salesId);
   if (product) return { type: null, message: product };
   return { type: 'NOT_FOUND', message: 'Product not found' };
 };
@@ -26,4 +40,6 @@ module.exports = {
   listSales,
   findSalesById,
   registerSales,
+  deleteSalesById,
+  findSalesProductsById,
 };

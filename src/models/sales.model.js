@@ -44,8 +44,28 @@ const findSalesById = async (salesId) => {
   return camelize(sales);
 };
 
+const findSalesProductsById = async (salesId) => {
+  const [salesProducts] = await connection.execute(
+    'SELECT * FROM StoreManager.sales WHERE id = ?',
+    [salesId],
+  );
+
+  return camelize(salesProducts);
+};
+
+const deleteSalesById = async (salesId) => {
+  const [sales] = await connection.execute(
+    'DELETE FROM StoreManager.sales WHERE id = ?',
+    [salesId],
+  );
+
+  return sales;
+};
+
 module.exports = {
   listSales,
   findSalesById,
   registerSales,
+  deleteSalesById,
+  findSalesProductsById,
 };
