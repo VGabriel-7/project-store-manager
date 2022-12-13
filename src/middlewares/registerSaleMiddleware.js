@@ -9,7 +9,7 @@ const validProducts = (req, res, next) => {
 
   if (validQuantity) return res.status(400).json({ message: '"quantity" is required' });
 
-  const validGreaterThanZero = req.body.some(({ quantity }) => quantity === 0 || quantity < 0);
+  const validGreaterThanZero = req.body.some(({ quantity }) => quantity <= 0);
 
   if (validGreaterThanZero) {
     return res

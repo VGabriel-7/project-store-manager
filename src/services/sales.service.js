@@ -32,8 +32,8 @@ const deleteSalesById = async (salesId) => {
 };
 
 const registerSales = async (body) => {
-  const restul = await salesModel.registerSales(body);
-  return { type: null, message: restul };
+  const result = await salesModel.registerSales(body);
+  return { type: null, message: result };
 };
 
 module.exports = {
